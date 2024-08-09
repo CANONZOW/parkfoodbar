@@ -12,15 +12,15 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="market">Market</a>
         </li>
-        <li class="nav-item">
+        {{--  <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
+        </li>  --}}
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#about">About</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Membership</a>
+          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
         </li>
 
 

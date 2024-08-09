@@ -7,6 +7,7 @@
                 <p class="text-2xl">Login</p>
                 <p>please login to continue</p>
             </div>
+            <x-jet-validation-errors class="mb-4" />
 
             <div class="mt-10">
                 <form action="{{route('login')}}" method="POST">

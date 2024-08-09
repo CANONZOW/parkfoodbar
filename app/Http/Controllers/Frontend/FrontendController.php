@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Membership;
 use App\Models\ProductCategory;
 use App\Models\Transaction;
+use App\Models\Driver;
 use App\Models\TransactionItem;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -136,10 +137,37 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function getAvailableDriverId()
+    {
+        // Cek apakah ada transaksi yang sudah dibuat
+        $transactionCount = Transaction::count();
+    
+        if ($transactionCount === 0) {
+            // Jika belum ada transaksi, pilih driver secara acak
+            $driver = Driver::inRandomOrder()->first();
+        } else {
+            // Jika sudah ada transaksi, pilih driver yang tidak sibuk
+            $busyDriverIds = Transaction::whereIn('status', [ 'SEDANG DI ANTAR'])
+                                        ->pluck('driver_id')
+                                        ->toArray();
+    
+            $driver = Driver::whereNotIn('id', $busyDriverIds)->inRandomOrder()->first();
+        }
+    
+        return $driver ? $driver->id : null; // Mengembalikan id driver atau null jika tidak ada driver yang tersedia
+    }
+
     public function checkout(Request $request)
     {
         $data = $request->all();
         $notiket = rand(111111, 999999);
+        $driver_id = $this->getAvailableDriverId();
+        
+        if (!$driver_id) {
+            return redirect()->back()->with('error', 'Tidak ada driver yang tersedia saat ini.');
+        }
+    
+       
         $data['invoice'] =  "PFB-" . $notiket;
         // Get Carts data
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
@@ -150,6 +178,9 @@ class FrontendController extends Controller
         $data['no_hp'] = $request->no_hp;
         $data['address'] = $request->address; 
         $data['kodepos'] = $request->kodepos;
+
+
+        $data['driver_id'] = $driver_id;
 
 
         $data['total_price'] = $carts->sum('total_price');

@@ -76,7 +76,7 @@ class ProductGalleryController extends Controller
             }
         }
 
-        return redirect()->route('dashboard.product.gallery.index', $product->id);
+        return redirect()->route('dashboard.product.gallery.index', $product->id)->with('success','Data Berhasil Di Upload');
     }
 
     /**
@@ -123,6 +123,6 @@ class ProductGalleryController extends Controller
     {
         $gallery->delete();
 
-        return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
+        return redirect()->route('dashboard.product.gallery.index', $gallery->products_id)->with('success','Data Berhasil Di Hapus');
     }
 }

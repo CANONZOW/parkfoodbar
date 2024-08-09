@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('dashboard.product.index');
+        return redirect()->route('dashboard.product.index')->with('success', 'Produk Berhasil Di Buat!!');
     }
 
     /**
@@ -113,7 +113,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('dashboard.product.index');
+        return redirect()->route('dashboard.product.index')->with('success','Produk Berhasil Di Edit');
     }
 
     /**
@@ -126,6 +126,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('dashboard.product.index');
+        return redirect()->route('dashboard.product.index')->with('success', 'Produk Berhasil Di Hapus !');
     }
 }

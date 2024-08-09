@@ -14,6 +14,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\DriverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::get('/', [DashboardController::class, 'index'])->name('index');
             Route::get('laporanmembership', [LaporanController::class, 'laporanmembership'])->name('laporanmembership');
             Route::resource('product', ProductController::class);
+            Route::resource('driver', DriverController::class);
             Route::resource('membership', MembershipController::class);
             Route::resource('category', ProductCategoryController::class);
             Route::resource('product.gallery', ProductGalleryController::class)->shallow()->only([

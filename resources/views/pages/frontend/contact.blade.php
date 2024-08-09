@@ -9,7 +9,7 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form">
                 <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                {{--  <form name="sentMessage" id="contactForm" novalidate="novalidate">
                     <div class="control-group">
                         <input type="text" class="form-control" id="name" placeholder="Your Name" required="required"
                             data-validation-required-message="Please enter your name" />
@@ -34,25 +34,27 @@
                         <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
                             Message</button>
                     </div>
-                </form>
+                </form>  --}}
             </div>
         </div>
         <div class="col-lg-5 mb-5">
             <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
-            <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr
-                erat sit sit. Dolor diam et erat clita ipsum justo sed.</p>
+            <p>Beergarden, Wine Shop & Bistro</p>
+            <p>OPERASIONAL HOURS 11.00 - 02.00</p>
             <div class="d-flex flex-column mb-3">
-                <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                <h5 class="font-weight-semi-bold mb-3">Store </h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jalan Soekarno Hatta No.3, Jambi City
+
+                </p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>ParkFoodBar@gmail.com</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+62 082185350369</p>
             </div>
-            <div class="d-flex flex-column">
+            {{--  <div class="d-flex flex-column">
                 <h5 class="font-weight-semi-bold mb-3">Store 2</h5>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-            </div>
+            </div>  --}}
         </div>
     </div>
 </div>

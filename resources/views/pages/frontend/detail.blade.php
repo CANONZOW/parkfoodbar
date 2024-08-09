@@ -1,4 +1,4 @@
-@extends('layouts.market')
+    @extends('layouts.market')
 @section('market-content')
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">

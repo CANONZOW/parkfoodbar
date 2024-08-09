@@ -23,5 +23,6 @@
             @yield('guest-content')
         </div>
     </body>
+    @include('sweetalert::alert')
 
 </html>

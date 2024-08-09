@@ -65,7 +65,7 @@ class ProductCategoryController extends Controller
 
         ProductCategory::create($data);
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.category.index')->with('success','Data Berhasil Di Tambah');
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductCategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.category.index')->with('success','Data Berhasil Di Update');
     }
 
     /**
@@ -118,6 +118,6 @@ class ProductCategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.category.index')->with('success','Data Berhasil Di Hapus');
     }
 }

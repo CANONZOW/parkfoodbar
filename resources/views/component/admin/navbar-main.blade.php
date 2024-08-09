@@ -28,7 +28,7 @@
           <input
             class="form-control"
             type="text"
-            placeholder="Search shoes"
+            placeholder=""
           />
         </div>
         <button

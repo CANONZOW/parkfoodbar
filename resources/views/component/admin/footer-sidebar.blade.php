@@ -27,5 +27,5 @@
         </label>
       </div>
     </div>
-    <p>©2022 Shoe Store. All rights reserved.</p>
+    
   </footer>

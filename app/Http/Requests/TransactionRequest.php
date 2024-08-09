@@ -25,7 +25,10 @@ class TransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'in:PENDING,SUCCESS,SEDANG DI ANTAR,PESANAN DITERIMA,'
+            'status' => 'in:PENDING,SUCCESS,SEDANG DI ANTAR,PESANAN DITERIMA,',
+
         ];
     }
+
+   
 }

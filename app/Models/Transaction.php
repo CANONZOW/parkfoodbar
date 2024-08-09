@@ -12,6 +12,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'users_id',
+        'driver_id',
         'invoice',
         'tgl',
         'no_hp',
@@ -33,6 +34,10 @@ class Transaction extends Model
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
+    public function driver()
+    {
+        return $this->belongsto(Driver::class,'driver_id', 'id');
+    }
     public function items()
     {
         return $this->hasMany(TransactionItem::class, 'transactions_id', 'id');
