@@ -15,6 +15,7 @@ use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\ComplainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,8 @@ Route::get('/cari', [FrontendController::class, 'cari'])->name('cari');
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-
+    Route::post('/complaints', [FrontendController::class, 'complain'])->name('complaints.store');
+    Route::get('transaction/{id}/status/{status}', [FrontendController::class, 'changeStatus'])->name('transaction.changeStatus');
     Route::post('/search-invoice', [FrontendController::class, 'searchInvoice'])->name('search-invoice');
     Route::get('/checkoutpage', [FrontendController::class, 'checkoutpage'])->name('checkoutpage');
     Route::get('/cart', [FrontendController::class, 'cart'])->name('cart');
@@ -52,6 +54,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::get('/', [DashboardController::class, 'index'])->name('index');
             Route::get('laporanmembership', [LaporanController::class, 'laporanmembership'])->name('laporanmembership');
             Route::resource('product', ProductController::class);
+            Route::resource('complain', ComplainController::class);
             Route::resource('driver', DriverController::class);
             Route::resource('membership', MembershipController::class);
             Route::resource('category', ProductCategoryController::class);

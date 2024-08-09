@@ -9,6 +9,7 @@ use App\Models\Membership;
 use App\Models\ProductCategory;
 use App\Models\Transaction;
 use App\Models\Driver;
+use App\Models\Review;
 use App\Models\TransactionItem;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -239,6 +240,47 @@ class FrontendController extends Controller
         $transaction = Transaction::where('invoice', $request->invoice)->latest()->first();
         $transactionitem = TransactionItem::where('transactions_id', $transaction->id)->get();
         $category = ProductCategory::all();
-        return view('pages.frontend.track', compact('category', 'transaction', 'transactionitem'));
+        $complains = Review::where('transactions_id', $transaction->id)->get();
+        return view('pages.frontend.track', compact('category', 'transaction', 'transactionitem','complains'));
+    }
+
+    public function complain(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+          
+            'foto_1' => 'required|mimes:jpeg,png,jpg,gif|max:50000',
+            'keterangan' => 'required|string|max:255',
+        ]);
+
+        // Menyimpan foto jika ada
+    
+        if ($request->hasFile('foto_1')) {
+            $foto = $request->file('foto_1');
+            $fotoPath = $foto->store('public/gallery'); // Simpan di folder 'public/complaints'
+        }
+
+        // Membuat data komplain baru
+        Review::create([
+            'transactions_id' => $request->transactions_id,
+            'users_id' => Auth::user()->id,
+            'foto_1' => $fotoPath,
+            'keterangan' => $request->keterangan,
+        ]);
+        $transactions = Transaction::where('id', $request->transactions_id)->first();
+        $transactions->update([
+            'status' => 'PENGEMBALIAN',
+        ]);
+        return redirect()->back()->with('success', 'Komplain berhasil dikirim');
+    }
+
+    public function changeStatus(Request $request, $id, $status)
+    {
+        $transaction = Transaction::findOrFail($id);
+
+        $transaction->status = $status;
+        $transaction->save();
+
+        return redirect()->back()->with('success', 'Pesanan berhasil Diterima');
     }
 }
