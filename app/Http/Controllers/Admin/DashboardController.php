@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Membership;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -42,7 +43,7 @@ class DashboardController extends Controller
             'memberships',
             'product',
             'category',
-            
+
 
         ));
     }
