@@ -51,6 +51,7 @@
       </svg>
       <p>Officer</p>
     </a>
+    
   <a href="{{route('dashboard.driver.index')}}"
     class="item-menu {{ request()->is('dashboard/driver') ? 'active' : ''}} " onclick="handleClickMenu(this)"
     onclick="handleClickMenu(this)">

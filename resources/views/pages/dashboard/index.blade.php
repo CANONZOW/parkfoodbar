@@ -1,7 +1,139 @@
 @extends('layouts.admin')
 
 @section('admin-content')
+<div class="py-12">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+              <table class="items-center bg-transparent w-full border-collapse cell-border display responsive nowrap "
+                  id="crudTable">
+                  <thead>
+                      <tr>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              No
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Invoice
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Nama Pelanggan
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Alamat Pelanggan
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Total Harga
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Pembayaran
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Status
+                          </th>
+                          <th
+                              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                              Action
+                          </th>
 
+                      </tr>
+                  </thead>
+
+                  <tbody class="text-left">
+                  </tbody>
+
+              </table>
+          </div>
+      </div>
+  </div>
+  
+</div>
+<script>
+  // AJAX DataTable
+  var datatable = $('#crudTable').DataTable({
+      ajax: {
+          url: '{!! url()->current() !!}',
+      },
+      dom: 'Bfrtip',
+      buttons: [{
+          extend: 'print',
+          customize: function (win) {
+              $(win.document.body)
+                  .css('font-size', '10pt')
+                  .prepend(
+                      '<div><hr class="bg-black"><hr class="bg-black"><hr class="bg-black"><table class="bg-white px-5 py-5" width="100%"><tr><td width="25" align="center"><img src="https://img.indoclubbing.com/places/958213996265025078704229690425/park-foodbar_260.png" width="100%"></td><td width="50" align="center"><h1 class="text-2xl font-bold">PARK FOOD BAR REPORT MEMBERSHIP</h1><h1 class="text-base font-bold">PARKFOODBAR CORP</h1><h1 class="text-2xl font-bold">LAPORAN MEMBERSHIP PARKFOODBAR</h1><p>Jl. Soekarno-Hatta No.3, The Hok, Kec.Jambi Sel., Kota Jambi, Jambi 36138 </p><p>Tlp: 0741 3066090 </p></td><td width="25" align="center"><img src="https://img.indoclubbing.com/places/958213996265025078704229690425/park-foodbar_260.png"width="100%"></td></tr></table><hr class="bg-black"><hr class="bg-black"><hr class="bg-black"></div>'
+                  );
+
+              $(win.document.body).find('table')
+                  .addClass('compact')
+                  .css('font-size', 'inherit');
+          }
+      }],dom: 'Bfrtip',
+      buttons: [{
+          extend: 'print',
+          customize: function (win) {
+              $(win.document.body)
+                  .css('font-size', '10pt')
+                  .prepend(
+                      '<div><hr class="bg-black"><hr class="bg-black"><hr class="bg-black"><table class="bg-white px-5 py-5" width="100%"><tr><td width="25" align="center"><img src="https://img.indoclubbing.com/places/958213996265025078704229690425/park-foodbar_260.png" width="100%"></td><td width="50" align="center"><h1 class="text-2xl font-bold">PARK FOOD BAR REPORT MEMBERSHIP</h1><h1 class="text-base font-bold">PARKFOODBAR CORP</h1><h1 class="text-2xl font-bold">LAPORAN MEMBERSHIP PARKFOODBAR</h1><p>Jl. Soekarno-Hatta No.3, The Hok, Kec.Jambi Sel., Kota Jambi, Jambi 36138 </p><p>Tlp: 0741 3066090 </p></td><td width="25" align="center"><img src="https://img.indoclubbing.com/places/958213996265025078704229690425/park-foodbar_260.png"width="100%"></td></tr></table><hr class="bg-black"><hr class="bg-black"><hr class="bg-black"></div>'
+                  );
+
+              $(win.document.body).find('table')
+                  .addClass('compact')
+                  .css('font-size', 'inherit');
+          }
+      }],
+      columns: [{
+              data: 'DT_RowIndex',
+              name: 'DT_RowIndex',
+              width: '5%'
+          },
+          {
+              data: 'invoice',
+              name: 'invoice'
+          },
+          {
+              data: 'user.name',
+              name: 'user.name'
+          },
+          {
+              data: 'address',
+              name: 'address'
+          },
+          {
+              data: 'total_price',
+              name: 'total_price',
+              orderable: false,
+              searchable: false,
+          },
+          {
+              data: 'payment',
+              name: 'payment',
+          },
+          {
+              data: 'status',
+              name: 'status',
+              orderable: false,
+              searchable: false,
+          },
+
+          {
+              data: 'action',
+              name: 'action',
+              orderable: false,
+              searchable: false,
+              width: '25%'
+          },
+      ],
+  });
+
+</script>
 
 <section class="d-flex flex-column gap-4">
 
@@ -90,6 +222,7 @@
 
   </div>
   {{ $memberships->links() }}
+ 
 </section>
 
 

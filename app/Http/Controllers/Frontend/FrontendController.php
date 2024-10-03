@@ -249,7 +249,7 @@ class FrontendController extends Controller
         // Validasi input
         $request->validate([
           
-            'foto_1' => 'required|mimes:jpeg,png,jpg,gif|max:50000',
+            'foto_1' => 'required|mimes:jpeg,png,jpg,gif|max:1000',
             'keterangan' => 'required|string|max:255',
         ]);
 
